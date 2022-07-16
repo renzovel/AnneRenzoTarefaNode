@@ -1,0 +1,27 @@
+{
+  "name": "annerenzotarefanode",
+  "version": "1.0.0",
+  "description": "Pprojeto das aulas de node com API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renzovel/AnneRenzoTarefaNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renzovel/AnneRenzoTarefaNode/issues"
+  },
+  "homepage": "https://github.com/renzovel/AnneRenzoTarefaNode#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "sequelize": "^6.21.3",
+    "sqlite3": "^5.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
