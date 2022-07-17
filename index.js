@@ -14,7 +14,9 @@ const Task = TaskModel(Connection, DataTypes);
 
 // List tasks Lista de tarefas
 app.get('/tasks', async (req, res) => {
+    //recebe todas as tarefas da tabela tarefas
     const AllTasks=await Task.findAll();
+    //enviamos as tarefas para o usuario dentro de data
     res.json({ action: 'Listing tasks', data : AllTasks})
 })
 
