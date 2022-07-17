@@ -18,7 +18,7 @@ app.get('/tasks', async (req, res) => {
     //recebe todas as tarefas da tabela tarefas
     const AllTasks=await Task.findAll();
     //enviamos as tarefas para o usuario dentro de data
-    res.json({ action: 'Listing tasks', data : AllTasks})
+    res.json({ action: 'Listing tasks', data : AllTasks});
 })
 
 // Create task Criar Tarefa
@@ -32,26 +32,27 @@ app.post('/tasks', async (req, res) => {
 })
 
 // Show task Mostrar Tarefas Por ID
-app.get('/tasks/:id', (req, res) => {
+app.get('/tasks/:id', async (req, res) => {
+    //recebendo o id da tarefa pela url
     const taskId = req.params.id;
-
-    
-
-    res.send({ action: 'Showing task', taskId: taskId })
+    //consultar as tarefas da tabela pelo id
+    const Tarefa =  await Task.findByPk(taskId);
+    //devolvemos como resposta apenas a tarefa
+    res.send({ action: 'Showing task', taskId: taskId , data: Tarefa});
 })
 
 // Update task Atualizar Tarefas
 app.put('/tasks/:id', (req, res) => {
     const taskId = req.params.id
 
-    res.send({ action: 'Updating task', taskId: taskId })
+    res.send({ action: 'Updating task', taskId: taskId });
 })
 
 // Delete task Apagar Tarefas
 app.delete('/tasks/:id', (req, res) => {
     const taskId = req.params.id
 
-    res.send({ action: 'Deleting task', taskId: taskId })
+    res.send({ action: 'Deleting task', taskId: taskId });
 })
 
 
