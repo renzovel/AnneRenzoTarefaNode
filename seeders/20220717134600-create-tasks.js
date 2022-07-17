@@ -11,6 +11,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+     await queryInterface.bulkInsert('Tasks', [{
+      description: 'Batata',
+      done: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      description: 'Cenoura',
+      done: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      description: 'Maçãs',
+      done: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }])
   },
 
   async down (queryInterface, Sequelize) {
