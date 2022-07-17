@@ -11,6 +11,7 @@ const Connection = new Sequelize({
 
 const Task = TaskModel(Connection, DataTypes);
 
+app.use(express.json());
 
 // List tasks Lista de tarefas
 app.get('/tasks', async (req, res) => {
@@ -21,15 +22,20 @@ app.get('/tasks', async (req, res) => {
 })
 
 // Create task Criar Tarefa
-app.post('/tasks', (req, res) => {
-    const body = req.body
-
-    res.json(body)
+app.post('/tasks', async (req, res) => {
+    //recebendo os dados da tarefa
+    const form = req.body;
+    //criando novas tarefas no banco de dados na tabela tarefas
+    const resposta = await Task.create({description:form.description, done:form.done});
+    //ennviando para o cliente a resposta de sequelize
+    res.json({action: 'Create task', message: resposta});
 })
 
 // Show task Mostrar Tarefas Por ID
 app.get('/tasks/:id', (req, res) => {
-    const taskId = req.params.id
+    const taskId = req.params.id;
+
+    
 
     res.send({ action: 'Showing task', taskId: taskId })
 })
