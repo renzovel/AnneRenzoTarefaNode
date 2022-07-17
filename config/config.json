@@ -1,7 +1,7 @@
 {
   "development": {
     "storage": "./task-list.db",
-    "dialect": "sqlite3"
+    "dialect": "sqlite"
   },
   "test": {
     "username": "root",
