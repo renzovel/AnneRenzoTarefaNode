@@ -44,25 +44,23 @@ app.get('/tasks/:id', async (req, res) => {
 // Update task Atualizar Tarefas
 app.put('/tasks/:id', async (req, res) => {
     // Recebendo parametro id da tarefa que vai ser atualizar alem do registro
-    const taskId = req.params.id
+    const taskId = req.params.id;
     //recebendo os dados da tarefa
     const form = req.body;
-    const  task = await Task.findByPK(taskId);
+    const  task = await Task.findByPk(taskId);
      //Atualizando novas tarefas no banco de dados na tabela tarefas
-    const resposta = await Task.update({description:form.description, done:form.done});
+    const resposta = await task.update({description:form.description, done:form.done});
     res.send({ action: 'Updating task', taskId: taskId });
 })
 
 // Delete task Apagar Tarefas
 app.delete('/tasks/:id', async (req, res) => {
     //Recebendo o id da tarefa que ja foi cadastrado
-    const taskId = req.params.taskId
+    const taskId = req.params.id;
     //Apagamos a tarefa por id
     const resposta = await Task.destroy({where : {id : taskId}});
     res.send({ action: 'Deleting task', taskId: taskId });
 })
-
-
 
 app.listen(PORT,()=>{
     console.log(`        
